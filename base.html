@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корейский язык Курсы</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #2c3e50;
+        }
+
+        p {
+            font-size: 20px;
+            color: #34495e;
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            margin: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .test-btn {
+            background-color: #e74c3c;
+        }
+
+        .test-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .language-select {
+            margin-top: 40px;
+        }
+
+        .language-select select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="title">Добро пожаловать в курсы корейского языка!</h1>
+        <p id="description">Наши курсы помогут вам улучшить знания корейского языка. Выберите уровень и начните обучение.</p>
+
+        <div class="button-container">
+            <button class="btn" id="beginnerBtn" onclick="location.href='lessons.html'">Начальный уровень</button>
+            <button class="btn" id="intermediateBtn" onclick="location.href='intermediate.html'">Средний уровень</button>
+            <button class="btn" id="advancedBtn" onclick="location.href='advanced.html'">Профессиональный уровень</button>
+        </div>
+
+        <div class="button-container">
+            <button class="btn test-btn" id="testBtn" onclick="location.href='test.html'">Перейти к тестам</button>
+        </div>
+
+        <div class="language-select">
+            <label for="language">Выберите язык: </label>
+            <select id="language" onchange="changeLanguage()">
+                <option value="ru">Русский</option>
+                <option value="uz">Узбекский</option>
+                <option value="tr">Турецкий</option>
+                <option value="kk">Казахский</option>
+                <option value="ky">Киргизский</option>
+                <option value="ne">Непальский</option>
+                <option value="vi">Вьетнамский</option>
+                <option value="si">Шриланкийский</option>
+                <option value="bn">Бангладешский</option>
+                <option value="ar">Арабский</option>
+                <option value="en">Английский</option>
+                <option value="th">Тайландский</option>
+            </select>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                title: "Welcome to Korean Language Courses!",
+                description: "Our courses will help you improve your knowledge of the Korean language. Choose your level and start learning.",
+                beginnerBtn: "Beginner Level",
+                intermediateBtn: "Intermediate Level",
+                advancedBtn: "Advanced Level",
+                testBtn: "Go to Tests",
+                languageLabel: "Select Language:"
+            },
+            ru: {
+                title: "Добро пожаловать в курсы корейского языка!",
+                description: "Наши курсы помогут вам улучшить знания корейского языка. Выберите уровень и начните обучение.",
+                beginnerBtn: "Начальный уровень",
+                intermediateBtn: "Средний уровень",
+                advancedBtn: "Профессиональный уровень",
+                testBtn: "Перейти к тестам",
+                languageLabel: "Выберите язык:"
+            },
+            uz: {
+                title: "Koreys tilidagi bilimlaringizni tekshiring",
+                description: "Bizning kurslarimiz sizga koreys tilini yaxshilashga yordam beradi. Darajani tanlang va o'qishni boshlang.",
+                beginnerBtn: "Boshlang'ich daraja",
+                intermediateBtn: "O'rta daraja",
+                advancedBtn: "Professional daraja",
+                testBtn: "Testlarga o'tish",
+                languageLabel: "Tilni tanlang:"
+            },
+           kk: {
+    "title": "Корей тілі курстарына қош келдіңіз!",
+    "description": "Біздің курстарымыз сізге корей тілін жетілдіруге көмектеседі. Деңгей таңдаңыз және оқуды бастаңыз.",
+    "beginnerBtn": "Бастауыш деңгей",
+    "intermediateBtn": "Орташа деңгей",
+    "advancedBtn": "Кәсіби деңгей",
+    "testBtn": "Тесттерге өту",
+    "languageLabel": "Тілді таңдаңыз:"
+},
+ky: {
+    "title": "Корея тили курстарына кош келиңиз!",
+    "description": "Биздин курстар сизге корей тилин жакшыртууга жардам берет. Деңгейди тандаңыз жана окууну баштаңыз.",
+    "beginnerBtn": "Баштапкы деңгээл",
+    "intermediateBtn": "Орточо деңгээл",
+    "advancedBtn": "Кесиптик деңгээл",
+    "testBtn": "Тесттерге өтүү",
+    "languageLabel": "Тилди тандаңыз:"
+},
+tr: {
+    "title": "Korece Dil Kurslarına Hoş Geldiniz!",
+    "description": "Kurslarımız Korece bilginizi geliştirmenize yardımcı olacak. Seviyenizi seçin ve öğrenmeye başlayın.",
+    "beginnerBtn": "Başlangıç Seviyesi",
+    "intermediateBtn": "Orta Seviye",
+    "advancedBtn": "İleri Seviye",
+    "testBtn": "Testlere Geç",
+    "languageLabel": "Dil Seçiniz:"
+},
+ne: {
+    "title": "कोरियाली भाषा कोर्सहरूमा स्वागत छ!",
+    "description": "हाम्रा कोर्सहरूले तपाईंलाई कोरियाली भाषामा ज्ञान सुधार्न मद्दत गर्नेछ। स्तर चयन गर्नुहोस् र अध्ययन सुरु गर्नुहोस्।",
+    "beginnerBtn": "सुरुआत स्तर",
+    "intermediateBtn": "मध्यम स्तर",
+    "advancedBtn": "व्यावसायिक स्तर",
+    "testBtn": "परीक्षामा जानुहोस्",
+    "languageLabel": "भाषा चयन गर्नुहोस्:"
+},
+vi: {
+    "title": "Chào mừng bạn đến với các khóa học tiếng Hàn!",
+    "description": "Các khóa học của chúng tôi sẽ giúp bạn cải thiện kiến thức tiếng Hàn. Hãy chọn cấp độ và bắt đầu học.",
+    "beginnerBtn": "Cấp độ cơ bản",
+    "intermediateBtn": "Cấp độ trung cấp",
+    "advancedBtn": "Cấp độ nâng cao",
+    "testBtn": "Đi đến bài kiểm tra",
+    "languageLabel": "Chọn ngôn ngữ:"
+},
+si: {
+    "title": "කොරියානු භාෂා පාඨමාලා වෙත සාදරයෙන් පිළිගනිමු!",
+    "description": "අපගේ පාඨමාලා ඔබට කොරියානු භාෂාවේ දැනුම වැඩිදියුණු කිරීමට උපකාරී වේ. ඔබේ මට්ටම තෝරා අධ්‍යයනය ආරම්භ කරන්න.",
+    "beginnerBtn": "අවම මට්ටම",
+    "intermediateBtn": "මැදි මට්ටම",
+    "advancedBtn": "උසස් මට්ටම",
+    "testBtn": "පරික්ෂා කර ගැනීමට යන්න",
+    "languageLabel": "භාෂාව තෝරන්න:"
+},
+bn: {
+    "title": "কোরিয়ান ভাষার কোর্সে স্বাগতম!",
+    "description": "আমাদের কোর্সগুলি আপনাকে কোরিয়ান ভাষার জ্ঞান উন্নত করতে সহায়ক হবে। আপনার স্তর নির্বাচন করুন এবং শেখা শুরু করুন।",
+    "beginnerBtn": "শুরু স্তর",
+    "intermediateBtn": "মধ্যম স্তর",
+    "advancedBtn": "পেশাদার স্তর",
+    "testBtn": "পরীক্ষায় যান",
+    "languageLabel": "ভাষা নির্বাচন করুন:"
+},
+ar: {
+    "title": "مرحبًا بكم في دورات اللغة الكورية!",
+    "description": "دوراتنا ستساعدك على تحسين معرفتك باللغة الكورية. اختر المستوى وابدأ التعلم.",
+    "beginnerBtn": "المستوى المبتدئ",
+    "intermediateBtn": "المستوى المتوسط",
+    "advancedBtn": "المستوى المتقدم",
+    "testBtn": "الذهاب إلى الاختبارات",
+    "languageLabel": "اختر اللغة:"
+},
+th: {
+    "title": "ยินดีต้อนรับสู่หลักสูตรภาษาเกาหลี!",
+    "description": "หลักสูตรของเราจะช่วยให้คุณพัฒนาความรู้เกี่ยวกับภาษาเกาหลี เลือกระดับและเริ่มเรียนได้เลย",
+    "beginnerBtn": "ระดับเริ่มต้น",
+    "intermediateBtn": "ระดับกลาง",
+    "advancedBtn": "ระดับมืออาชีพ",
+    "testBtn": "ไปที่การทดสอบ",
+    "languageLabel": "เลือกภาษา:"
+},
+
+
+        };
+
+        function changeLanguage() {
+            const selectedLanguage = document.getElementById("language").value;
+            const translation = translations[selectedLanguage];
+
+            document.getElementById("title").textContent = translation.title;
+            document.getElementById("description").textContent = translation.description;
+            document.getElementById("beginnerBtn").textContent = translation.beginnerBtn;
+            document.getElementById("intermediateBtn").textContent = translation.intermediateBtn;
+            document.getElementById("advancedBtn").textContent = translation.advancedBtn;
+            document.getElementById("testBtn").textContent = translation.testBtn;
+            document.querySelector("label[for='language']").textContent = translation.languageLabel;
+        }
+    </script>
+
+</body>
+</html>
